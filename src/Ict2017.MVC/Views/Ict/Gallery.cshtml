@@ -1,0 +1,11 @@
+﻿@model GalleryItemViewModel
+
+<div class="gallery">
+    <header>
+    </header>
+    <img class="gallery-item" src="@Model.Location">
+    <footer>
+        <a disabled="@(!Model.PreviousExists ? "disabled" : null)" asp-action="Gallery" asp-route-page="@(Model.Id-1)">&#10094; Previous</a>
+        <a disabled="@(!Model.NextExists ? "disabled" : null)" asp-action="Gallery" asp-route-page="@(Model.Id+1)">Next &#10095;</a>
+    </footer>
+</div>

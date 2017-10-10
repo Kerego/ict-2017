@@ -1,0 +1,48 @@
+version: '3.3'
+services:
+  front:
+    build: ./src/Ict2017.Client
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./src/Ict2017.Client/src:/usr/src/app/src
+  identity-server:
+    build:
+      context: ./src
+      dockerfile: ./Ict2017.IdentityServer/Dockerfile
+    environment:
+      ASPNETCORE_URLS: "http://+:5003"
+      ASPNETCORE_ENVIRONMENT: "Docker"
+    ports:
+      - "5003:5003"
+  # webapi:
+  #   build: 
+  #     context: ./src
+  #     dockerfile: ./Ict2017.WebApi/Dockerfile
+  #   environment:
+  #     - ASPNETCORE_URLS=http://+:5000
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #   ports:
+  #     - "5000:5000"
+  mvc:
+    build: 
+      context: ./src
+      dockerfile: ./Ict2017.MVC/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:3000
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "3000:3000"
+  db:
+    image: microsoft/mssql-server-linux:2017-latest
+    hostname: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=100De100!
+    ports:
+      - '1433:1433'
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+volumes:
+  sqlserver-data:
+    driver: local

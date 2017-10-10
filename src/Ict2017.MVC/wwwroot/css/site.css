@@ -1,0 +1,186 @@
+﻿body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    background-color: #4052AB;
+    color: white;
+    font-family: wf_segoe-ui_light,"Segoe UI Light","Segoe WP Light","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+}
+
+.body-content {
+    align-self: center;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #053870;
+}
+
+.ad-container {
+    order: 3;
+    align-self: center;
+    /* position: fixed; */
+    left: calc((100% - 909px)/2);
+    /* bottom: 0; */
+    height: 100px;
+    width: 909px;
+}
+
+.hero {
+    width: calc(100% - 40px);
+    margin: 20px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 10px;
+    height: 400px;
+    width: 250px;
+    background-color: white;
+} 
+
+.card div {
+    height: 210px;
+    font-size: 15px;
+    padding: 10px;
+    color: black;
+    white-space: pre-wrap;
+}
+
+.card header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #053870;
+    height: 100px;
+}
+
+.card header h4,.card header h5 {
+    margin: 0;
+}
+
+.card header h5 {
+    align-self: flex-end;
+}
+
+.card footer {
+    position: relative;
+    background-color: #053870;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card footer h3 {
+    vertical-align: middle;
+    line-height: 2.5;
+    margin: 0;
+}
+
+.card footer button {
+    background-color: transparent;
+    border-width: 0;
+    font-size: 32px;
+}
+
+.card footer .clap-label {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    color: #4052AB;
+    position: absolute;
+    left: 35px;
+    top: 12px;
+    z-index: 1;
+    line-height: 1.4;
+    font-size: 13px;
+    cursor: default;
+}
+
+.card footer .clapped {
+    color: white;
+    background-color: #4052AB;
+}
+
+.gallery-item {
+    margin: 25px;
+    margin-bottom: 5px;
+    width: 500px;
+    height: 500px;
+}
+
+.gallery {
+    width: 550px;
+    height: 700px; 
+    background: white;
+    margin: 10px;
+}
+
+.gallery header {
+    background-color: #053870;
+    height: 100px;
+}
+
+.gallery footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gallery footer a {
+    padding: 3px;
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 2.5;
+    color: white;
+    background-color: #053870;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+}
+
+.gallery footer a[disabled="disabled"] {
+    background-color: #4052AB;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.gallery footer a:visited, .gallery footer a:hover, .gallery footer a:link, .gallery footer a:active {
+    color: inherit;
+}

@@ -1,0 +1,39 @@
+﻿@model PresentationViewModelBase[]
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+}
+
+<div class="flex">
+    @foreach(var item in Model)
+    {
+        <form asp-controller="Ict" asp-action="Clap" method="POST">
+            <article class="card">
+                <header>
+                    <h4>
+                        @item.Title
+                    </h4>
+                    <h5>
+                        @item.Presenter
+                    </h5>
+                </header>
+                <div>@item.Description.Trim()</div>
+                <footer>
+                    <input type="hidden" asp-for="@item.Id" name="id">
+                    @{
+                        var clapped = HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey($"clap-{item.Id}");
+
+                        <button type="submit" disabled="@(clapped ? "disabled": null)">
+                            👏
+                            <p class="@(clapped ? "clap-label clapped" : "clap-label")">@item.ClapCount</p>
+                        </button>
+                    }
+                    <h3>
+                        @item.StartTime.ToLocalTime().ToString("HH:mm") -
+                        @item.EndTime.ToLocalTime().ToString("HH:mm") 
+                    </h3>
+                </footer>
+            </article>
+        </form>
+    }
+</div>

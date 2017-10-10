@@ -1,0 +1,51 @@
+﻿@{
+    var route = ViewContext.RouteData.Values["Action"].ToString();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ICT 2017</title>
+    <style>
+    li#@(ViewContext.RouteData.Values["Controller"])-@(ViewContext.RouteData.Values["Action"]) {
+        background-color: #4CAF50;
+    }
+    </style>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<div></div>
+
+@await FlushAsync()
+<!-- simulate slow connection and slow ads -->
+@{ await System.Threading.Tasks.Task.Delay(400); }
+<div class="ad-container">
+    <img src="~/images/annoying-ad.png">
+</div>
+@await FlushAsync()
+
+@{ await System.Threading.Tasks.Task.Delay(500); }
+@await FlushAsync()
+
+    <ul class="gray">
+        <!-- <li><h3>ICT 2017</h3></li> -->
+        <li><a class="@(route == "Index" ? "active":"")" asp-controller="Ict" asp-action="Index">Home</a></li>
+        <li><a class="@(route == "Presentations" ? "active":"")" asp-controller="Ict" asp-action="Presentations">Presentations</a></li>
+        <li><a class="@(route == "Gallery" ? "active":"")" asp-controller="Ict" asp-action="Gallery" asp-route-page="1">Gallery</a></li>
+    </ul>
+
+@{ await System.Threading.Tasks.Task.Delay(200); }
+
+@await FlushAsync()
+
+    <div class="body-content">
+        @RenderBody()
+    </div>
+
+    @{ await System.Threading.Tasks.Task.Delay(500); }
+
+    @RenderSection("Scripts", required: false)
+    
+</html>
