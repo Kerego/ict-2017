@@ -40,7 +40,7 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=100De100!
     ports:
-      - '1433:1433'
+      - '1433:1434'
     volumes:
       - sqlserver-data:/var/opt/mssql
 volumes:
