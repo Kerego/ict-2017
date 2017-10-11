@@ -2,5 +2,9 @@
 	"/api": {
 		"target": "http://webapi:5000",
 		"secure": false
+	},
+	"/images": {
+		"target": "http://webapi:5000",
+		"secure": false
 	}
 }

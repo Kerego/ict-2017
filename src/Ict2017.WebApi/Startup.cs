@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace Ict2017.WebApi
 {
@@ -32,7 +33,10 @@ namespace Ict2017.WebApi
             services.AddScoped<IIctService, IctService>();
             services.AddScoped<ISeeder<IctDbContext>, IctSeeder>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

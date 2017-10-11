@@ -7,6 +7,7 @@ import { IctService } from './services/ict.service';
 import { HomeComponent } from './components/home/home.component';
 import { PresentationGridComponent } from './components/presentation-grid/presentation-grid.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([{
       path: '',
       pathMatch: 'full',
@@ -25,9 +27,13 @@ import { GalleryComponent } from './components/gallery/gallery.component';
       path: 'home',
       component: HomeComponent
     }, {
-      path: 'presentation-grid',
+      path: 'presentations',
       component: PresentationGridComponent,
     }, {
+      path: 'gallery',
+      redirectTo: 'gallery/1'
+    },
+    {
       path: 'gallery/:page',
       component: GalleryComponent
     }])

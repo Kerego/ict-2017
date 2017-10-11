@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Ict2017.Common;
+using Ict2017.Common.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,13 +21,10 @@ namespace Ict2017.WebApi.Controllers
         }
 
         [HttpPost("presentations")]
-        public async Task<IActionResult> Clap([FromBody] int id)
+        public async Task<IActionResult> Clap([FromBody] ViewModelBase vm)
         {
-            await service.IncrementClapCountAsync(id);
-            CookieOptions options = new CookieOptions();
-            options.Expires = DateTime.Now.AddDays(30);
-            Response.Cookies.Append($"clap-{id}", "clapped", options);
-            return RedirectToAction(nameof(Presentations));
+            await service.IncrementClapCountAsync(vm.Id);
+            return NoContent();
         }
 
         [HttpGet("presentations")]

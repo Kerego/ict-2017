@@ -1,12 +1,16 @@
 body {
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin: 0;
     background-color: #4052AB;
     color: white;
+    height: 100%;
     font-family: wf_segoe-ui_light,"Segoe UI Light","Segoe WP Light","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+
 }
+
 
 .body-content {
     align-self: center;
@@ -175,7 +179,7 @@ li a.active {
     text-align: center;
 }
 
-.gallery footer a[disabled="disabled"] {
+.gallery footer a.disabled {
     background-color: #4052AB;
     pointer-events: none;
     cursor: not-allowed;
