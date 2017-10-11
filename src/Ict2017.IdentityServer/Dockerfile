@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore-build
+FROM microsoft/aspnetcore-build:2
 WORKDIR /app
 
 COPY Ict2017.IdentityServer/*.csproj ./Ict2017.IdentityServer/$1

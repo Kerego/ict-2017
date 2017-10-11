@@ -29,10 +29,8 @@ namespace Ict2017.MVC
             services.AddDbContextPool<IctDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IIctService, IctService>();
             services.AddScoped<ISeeder<IctDbContext>, IctSeeder>();
-            services.AddMvc();
-
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

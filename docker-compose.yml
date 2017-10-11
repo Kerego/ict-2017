@@ -15,15 +15,15 @@ services:
       ASPNETCORE_ENVIRONMENT: "Docker"
     ports:
       - "5003:5003"
-  # webapi:
-  #   build: 
-  #     context: ./src
-  #     dockerfile: ./Ict2017.WebApi/Dockerfile
-  #   environment:
-  #     - ASPNETCORE_URLS=http://+:5000
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #   ports:
-  #     - "5000:5000"
+  webapi:
+    build: 
+      context: ./src
+      dockerfile: ./Ict2017.WebApi/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "5000:5000"
   mvc:
     build: 
       context: ./src
@@ -40,7 +40,7 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=100De100!
     ports:
-      - '1433:1434'
+      - '1434:1433'
     volumes:
       - sqlserver-data:/var/opt/mssql
 volumes:
