@@ -1,16 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { AppComponent } from './app.component';
 import { createInputTransfer, createNewHosts, removeNgStyles } from '@angularclass/hmr';
+import { IctService } from './services/ict.service';
+import { HomeComponent } from './components/home/home.component';
+import { PresentationGridComponent } from './components/presentation-grid/presentation-grid.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    PresentationGridComponent,
+    GalleryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot([{
+      path: '',
+      pathMatch: 'full',
+      redirectTo: 'home'
+    }, {
+      path: 'home',
+      component: HomeComponent
+    }, {
+      path: 'presentation-grid',
+      component: PresentationGridComponent,
+    }, {
+      path: 'gallery/:page',
+      component: GalleryComponent
+    }])
   ],
-  providers: [],
+  providers: [IctService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -26,7 +48,7 @@ export class AppModule {
     delete store.state;
     delete store.restoreInputValues;
   }
-  
+
   hmrOnDestroy(store) {
     let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
     store.disposeOldHosts = createNewHosts(cmpLocation);
