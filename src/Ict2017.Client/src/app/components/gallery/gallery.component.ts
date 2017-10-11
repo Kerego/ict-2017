@@ -9,12 +9,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  galleryItem: GalleryItem
+  model: GalleryItem
 
   constructor(private ictService: IctService, private activatedRoute: ActivatedRoute) { }
 
   loadItem(page: number = 1) {
-    this.ictService.getGalleryItem(page).subscribe(item => this.galleryItem = item)
+    this.ictService.getGalleryItem(page).subscribe(item => this.model = item)
   }
 
   ngOnInit() {
