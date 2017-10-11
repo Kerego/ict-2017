@@ -1,3 +1,23 @@
-<p>
-  presentation-grid works!
-</p>
+<div class="flex">
+  <article class="card" *ngFor="let presentation of presentations">
+    <header>
+      <h4>
+        {{presentation.title}}
+      </h4>
+      <h5>
+        {{presentation.presenter}}
+      </h5>
+    </header>
+    <div>{{presentation.description}}</div>
+    <footer>
+
+      <button type="button" (click)="canClap(presentation.id) && clap(presentation)">
+        👏
+        <p class="clap-label" [class.clapped]="!canClap(presentation.id)">{{presentation.clapCount}}</p>
+        </button>
+      <h3>
+        {{presentation.startTime | date: 'shortTime'}} - {{presentation.endTime | date: 'shortTime'}}
+      </h3>
+    </footer>
+  </article>
+</div>

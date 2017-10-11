@@ -1,3 +1,9 @@
-<p>
-  gallery works!
-</p>
+<div class="gallery">
+  <header>
+  </header>
+  <img class="gallery-item" [src]="model.location">
+  <footer>
+    <a [class.disabled]="!model.previousExists" [routerLink]="['/gallery', model.id - 1]">&#10094; Previous</a>
+    <a [class.disabled]="!model.nextExists" [routerLink]="['/gallery', model.id + 1]">Next &#10095;</a>
+  </footer>
+</div>
