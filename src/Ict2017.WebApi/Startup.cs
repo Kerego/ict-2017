@@ -47,6 +47,7 @@ namespace Ict2017.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();
         }
