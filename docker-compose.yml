@@ -6,15 +6,15 @@ services:
       - "4200:4200"
     volumes:
       - ./src/Ict2017.Client/src:/usr/src/app/src
-  identity-server:
-    build:
-      context: ./src
-      dockerfile: ./Ict2017.IdentityServer/Dockerfile
-    environment:
-      ASPNETCORE_URLS: "http://+:5003"
-      ASPNETCORE_ENVIRONMENT: "Docker"
-    ports:
-      - "5003:5003"
+  # identity-server:
+  #   build:
+  #     context: ./src
+  #     dockerfile: ./Ict2017.IdentityServer/Dockerfile
+  #   environment:
+  #     ASPNETCORE_URLS: "http://+:5003"
+  #     ASPNETCORE_ENVIRONMENT: "Docker"
+  #   ports:
+  #     - "5003:5003"
   webapi:
     build: 
       context: ./src
@@ -33,10 +33,6 @@ services:
       - ASPNETCORE_ENVIRONMENT=Docker
     ports:
       - "3000:3000"
-  prod:
-    build: ./src
-    ports:
-    - "80:80"
   db:
     image: microsoft/mssql-server-linux:2017-latest
     hostname: sqlserver
