@@ -33,6 +33,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Docker
     ports:
       - "3000:3000"
+  prod:
+    build: ./src
+    ports:
+    - "80:80"
   db:
     image: microsoft/mssql-server-linux:2017-latest
     hostname: sqlserver
